@@ -80,8 +80,9 @@ async function main() {
           console.error('Error fetching parent chain:', error);
         }
       } else {
-        // Default: analyze the parent post
-        postToAnalyze = mention.parent;
+        // Ignore mentions that don't contain "how many" or "really"
+        console.log('Ignoring mention - no recognized command');
+        return;
       }
 
       // More debug logging
@@ -93,9 +94,8 @@ async function main() {
       }
 
       if (!postToAnalyze || typeof postToAnalyze !== 'object' || !('text' in postToAnalyze)) {
-        await mention.reply({
-          text: "I need a post to analyze! Reply to any post with '@bot how many' and I'll check how many of its words are in the Bible."
-        });
+        // This should only happen if someone uses the command on a post without a parent
+        console.log('No post found to analyze');
         return;
       }
 
