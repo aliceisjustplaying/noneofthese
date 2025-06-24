@@ -1,0 +1,20 @@
+{
+  "name": "none-of-these-words",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "bun run src/bot.ts",
+    "dev": "bun --watch src/bot.ts",
+    "build-corpus": "bun run src/build-corpus.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@skyware/bot": "^0.3.11"
+  }
+}
